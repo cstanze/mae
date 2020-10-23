@@ -1,11 +1,8 @@
 #import "../MFCommon/MFToggle.h"
 
-@interface MCBatterySaverMode
-+(BOOL)isBatterySaverModeActive;
-@end
-
-@interface PSLowPowerModeSettingsDetail
-+(void)setEnabled:(BOOL)arg1;
+@interface _CDBatterySaver
++ (id)sharedInstance;
+- (BOOL)setPowerMode:(long long)arg1 error:(id *)arg2;
 @end
 
 @interface MFLowPowerToggle : MFToggle

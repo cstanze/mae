@@ -1,4 +1,4 @@
-#import "MFLRootListController.h"
+#import "MAERootListController.h"
 
 // 128, 116, 210 #8074d2
 
@@ -29,9 +29,5 @@
 
 -(BOOL)translucentNavigationBar {
     return NO;
-}
-
-- (HBAppearanceSettingsLargeTitleStyle)largeTitleStyle {
-    return 2;
 }
 @end

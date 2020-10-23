@@ -1,15 +1,9 @@
-#import <spawn.h>
 /* External Frameworks */
+    #import <spawn.h>
     #import <Cephei/HBPreferences.h>
+    #import "MFCommon/MaeCommon.hh"
 /* Views & View Controllers */
     #import "MFViewControllers/MFSystemViewController.h"
-/* Toggles & Handlers */
-    #import "MFToggles/MFAirplaneToggle.h"
-    #import "MFToggles/MFWifiToggle.h"
-    #import "MFToggles/MFBluetoothToggle.h"
-    #import "MFToggles/MFLowPowerToggle.h"
-    #import "MFHandlers/MFVolumeHandler.h"
-    #import "MFHandlers/MFBrightnessHandler.h"
 
 @interface CCUIModularControlCenterViewController : UIViewController
 +(id)sharedInstance;
