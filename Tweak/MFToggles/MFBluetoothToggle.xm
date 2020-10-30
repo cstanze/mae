@@ -1,17 +1,8 @@
 #import "MFBluetoothToggle.h"
 
-/*
-@interface BluetoothManager
-+(id)sharedInstance;
--(BOOL)powered;
--(BOOL)setPowered:(BOOL)arg1;
--(void)_powerChanged;
-@end
-*/
-
 @implementation MFBluetoothToggle
 -(void)toggleState {
-    self.toggled = !self.toggled;
+    self.toggled = ![[%c(BluetoothManager) sharedInstance] powered];
     [[%c(BluetoothManager) sharedInstance] setPowered:self.toggled];
     [[%c(BluetoothManager) sharedInstance] _powerChanged];
 }

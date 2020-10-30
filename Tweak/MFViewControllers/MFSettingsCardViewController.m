@@ -76,7 +76,6 @@ int offset = 0;
   self.bluetoothButton.translatesAutoresizingMaskIntoConstraints = NO;
   self.bluetoothButton.layer.cornerRadius = buttonSize / 2;
   self.bluetoothButton.backgroundColor = blueState ? [UIColor systemBlueColor] : [UIColor colorWithWhite:(2/3) alpha:0.7];
-  //[self.bluetoothButton setImage:(blueState) ? [UIImage systemImageNamed:@"bluetooth"] : [UIImage systemImageNamed:@"bluetooth_disabled"] forState:UIControlStateNormal];
   self.bluetoothButton.tintColor = [UIColor whiteColor]; // airState ? [UIColor blackColor] : [UIColor whiteColor];
   [self.bluetoothButton addTarget:self action:@selector(toggleBluetoothPower:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:self.bluetoothButton];

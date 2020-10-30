@@ -1,10 +1,10 @@
 #import "../MFToggles/MFWifiToggle.h"
 
 %hook WFClient
--(void)setPowered:(BOOL)arg1 {
+-(void)_updatePowerState {
+    %orig;
     [[NSNotificationCenter defaultCenter] 
         postNotificationName:@"MFWifiPowerChange" 
         object:self];
-    %orig;
 }
 %end
