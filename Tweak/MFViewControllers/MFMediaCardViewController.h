@@ -1,5 +1,6 @@
 #import "MFCardBackdropView.h"
+#import "MFBaseViewController.h"
 
-@interface MFMediaCardViewController : UIViewController
+@interface MFMediaCardViewController : MFBaseViewController
 @property(nonatomic, retain) MFCardBackdropView *backdropView;
 @end

@@ -1,0 +1,2 @@
+@interface MFBaseViewController : UIViewController
+@end

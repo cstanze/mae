@@ -7,6 +7,6 @@
 @end
 
 @interface MFCardBackdropView : UIView
-@property(nonatomic, retain) _UIBackdropView *backdropView;
+@property(nonatomic, retain) UIVisualEffectView *backdropView;
 @property(nonatomic, retain) UIImageView *cutoutView;
 @end

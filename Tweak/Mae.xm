@@ -11,6 +11,13 @@
 /* Preferences */
     static BOOL maeEnabled;
 
+%hook CCUIScrollView
+-(void)setContentInset:(UIEdgeInsets)arg1 {
+    %orig(UIEdgeInsetsMake(0, 0, 0, 0));
+}
+%end
+
+
 %hook CCUIModularControlCenterViewController
 -(id)init {
     return _sharedObject = %orig;
@@ -32,7 +39,7 @@
     self.overlayHeaderView.hidden = TRUE;
 
     self.controlCenterX = [[MFSystemViewController alloc] init];
-    self.controlCenterX.view.frame = CGRectMake(0, -self.overlayHeaderView.frame.size.height + 13.5, self.view.frame.size.width, self.view.frame.size.height);
+    self.controlCenterX.view.frame = CGRectMake(0, /*-self.overlayScrollView.*/0, self.view.frame.size.width, self.view.frame.size.height);
 
     for(UIView *subview in self.overlayScrollView.subviews){
         [subview removeFromSuperview];
