@@ -105,6 +105,7 @@ int offset = 0;
 
 -(void)toggleWifiPower:(MFButton*)sender {
   [wifiToggle toggleState];
+}
 
 -(void)toggleBluetoothPower:(MFButton*)sender {
   [bluetoothToggle toggleState];
