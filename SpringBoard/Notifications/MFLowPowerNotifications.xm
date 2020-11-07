@@ -1,0 +1,10 @@
+#import <MaeServices/MFLowPowerToggle.h>
+
+%hook BCBatteryDevice
+-(void)setLowPower:(BOOL)arg1 {
+    [[NSNotificationCenter defaultCenter] 
+        postNotificationName:@"MFLowPowerModeChange" 
+        object:self];
+    %orig;
+}
+%end
