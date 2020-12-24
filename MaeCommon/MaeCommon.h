@@ -1,3 +1,21 @@
-#import <MaeCommon/MaeToggle.h>
-#import <MaeCommon/MaeHandler.h>
-#import <MaeCommon/MaeCommon.hh>
+/* Toggles & Handlers */
+#import <MaeServices/MFAirplaneToggle.h>
+#import <MaeServices/MFWifiToggle.h>
+#import <MaeServices/MFBluetoothToggle.h>
+#import <MaeServices/MFLowPowerToggle.h>
+#import <MaeServices/MFVolumeHandler.h>
+#import <MaeServices/MFBrightnessHandler.h>  
+  
+/* Imports */
+#import <Cephei/HBPreferences.h>
+
+/* Preferences */
+// TODO: Remove this and replace it with something... better
+static BOOL maeEnabled;
+static BOOL plattersDark;
+
+/* Prefs Obj */
+HBPreferences *prefs;
+
+/* Load Prefs */
+void loadPrefs();

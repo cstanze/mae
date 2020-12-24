@@ -1,6 +1,15 @@
 #include "MFAirplaneToggle.h"
 
 @implementation MFAirplaneToggle
++ (instancetype)sharedInstance {
+    static MFAirplaneToggle *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[MFAirplaneToggle alloc] init];
+    });
+    return sharedInstance;
+}
+
 -(void)toggleState {
     self.toggled = ![[%c(SBAirplaneModeController) sharedInstance] isInAirplaneMode];
     [[%c(SBAirplaneModeController) sharedInstance] setInAirplaneMode:self.toggled];

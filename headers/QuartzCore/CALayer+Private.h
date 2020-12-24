@@ -2,6 +2,7 @@
 #include "CAFilter+Private.h"
 
 @interface CALayer (Private)
+@property(assign) BOOL continuousCorners;
 @property(assign) CGColorRef contentsMultiplyColor;
 @property(nonatomic, retain) NSArray *backgroundFilters;
 @property(nonatomic, retain) CAFilter *compositingFilter;

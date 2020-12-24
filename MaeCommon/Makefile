@@ -5,7 +5,7 @@ include $(THEOS)/makefiles/common.mk
 FRAMEWORK_NAME = MaeCommon
 
 MaeCommon_FILES = $(wildcard *.m)
-MaeCommon_EXTRA_FRAMEWORKS = MaeServices
+MaeCommon_EXTRA_FRAMEWORKS = Cephei MaeServices
 MaeCommon_PUBLIC_HEADERS = $(wildcard *.h) $(wildcard *.hh)
 MaeCommon_INSTALL_PATH = /Library/Frameworks
 MaeCommon_CFLAGS = -fobjc-arc -I../headers 

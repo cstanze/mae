@@ -1,6 +1,15 @@
 #import "MFBluetoothToggle.h"
 
 @implementation MFBluetoothToggle
++ (instancetype)sharedInstance {
+    static MFBluetoothToggle *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[MFBluetoothToggle alloc] init];
+    });
+    return sharedInstance;
+}
+
 -(void)toggleState {
     self.toggled = ![[%c(BluetoothManager) sharedInstance] powered];
     [[%c(BluetoothManager) sharedInstance] setPowered:self.toggled];

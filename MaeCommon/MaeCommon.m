@@ -1,4 +1,7 @@
-/*
- * Simple file that does nothing...
- * Just gotta clear those theos warnings
-*/
+#import "MaeCommon.hh"
+
+void loadPrefs() {
+    prefs = [[HBPreferences alloc] initWithIdentifier:@"com.constanze.maeprefs"];
+    [prefs registerBool:&maeEnabled default:YES forKey:@"maeEnabled"];
+    [prefs registerBool:&plattersDark default:YES forKey:@"plattersDark"];
+}

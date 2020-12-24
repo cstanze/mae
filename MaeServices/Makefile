@@ -6,6 +6,7 @@ FRAMEWORK_NAME = MaeServices
 
 MaeServices_FILES = $(wildcard *.m) $(wildcard *.xm)
 MaeServices_PUBLIC_HEADERS = $(wildcard *.h)
+MaeServices_EXTRA_FRAMEWORKS = Cephei
 MaeServices_INSTALL_PATH = /Library/Frameworks
 MaeServices_CFLAGS = -fobjc-arc -I../headers -I../
 MaeServices_LDFLAGS += -F../.theos/$(THEOS_OBJ_DIR_NAME) -w

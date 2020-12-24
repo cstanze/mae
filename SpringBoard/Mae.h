@@ -1,6 +1,5 @@
 /* External Frameworks */
     #import <spawn.h>
-    #import <Cephei/HBPreferences.h>
     #import <MaeCommon/MaeCommon.hh>
 /* Views & View Controllers */
     #import <MaeUI/MFSystemViewController.h>
@@ -18,18 +17,24 @@
 -(void)_updatePresentationForLocationY:(double)arg1;
 @end
 
-@interface MTMaterialView : UIView
-@end
-
-@interface CCSModuleRepository : NSObject
+@interface CCSModuleRepository : NSObject {
+    NSArray *_directoryURLs;
+}
++(id)sharedInstance;
 -(id)_loadAllModuleMetadata;
 @end
 
 @interface CCSModuleMetadata : NSObject
 +(instancetype)metadataForBundleAtURL:(id)arg1 ;
-@property (nonatomic,copy,readonly) NSString* moduleIdentifier;
+@property (nonatomic, copy, readonly) NSString *moduleIdentifier;
+@property (nonatomic, readonly) unsigned long long visibilityPreference;
 @end
 
+@interface CCSRemoteServiceProvider : NSObject {
+    CCSModuleRepository *_moduleRepository;
+}
++(id)sharedInstance;
+@end
 
 /*
  * @interface SBControlCenterController : NSObject

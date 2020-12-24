@@ -11,7 +11,7 @@
 /* Extern */
 
 #ifdef __cplusplus
-extern "C" {}
+extern "C" {
 #endif
 
 CGPoint UIRectGetCenter(CGRect rect);
