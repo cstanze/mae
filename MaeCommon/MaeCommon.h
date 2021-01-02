@@ -17,5 +17,6 @@ static BOOL plattersDark;
 /* Prefs Obj */
 HBPreferences *prefs;
 
-/* Load Prefs */
-void loadPrefs();
+@interface NSObject (Mae)
+-(NSString*)_methodDescription;
+@end

@@ -1,0 +1,780 @@
+
+module: com.jailbreak365.control-center.TwitterModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.accessibility.controlcenter.hearingdevices
+	visibility: 0
+	principalClass: HACCContentModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.NewTerm2Module
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.FlexModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SileoModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.AdBlockModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.BarcodeSupport.NFCControlCenterModule
+	visibility: 0
+	principalClass: NFCCModule
+	principalSuperclass: NSObject
+
+module: com.apple.accessibility.controlcenter.sounddetection
+	visibility: 0
+	principalClass: AXCCSoundDetectionModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.apple.Home.CompactControlCenter
+	visibility: 1
+	principalClass: HUCCControlCenterCompactModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ActivatorModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SwiftKeyModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.WeatherChannelModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GoogleMailModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.EdgeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SwarmModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.sleep.controlcenter.sleepmode
+	visibility: 0
+	principalClass: SleepModeControlCenterButton.SleepModeButton
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.AmazonUKModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.VoiceMemosModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.YouTubeMusicModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SBReloadModule
+	visibility: 0
+	principalClass: SBReloadModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.ShortcutsModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.1PasswordModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.MinecraftModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.siri.SpokenNotificationsModule
+	visibility: 2
+	principalClass: SiriUISpokenNotificationsModule
+	principalSuperclass: CCUIMenuModuleViewController
+
+module: com.jailbreak365.control-center.TweetbotModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GoogleMapsModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.DropboxModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.HealthModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GooglePhotosModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.AppStoreModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LocationModule
+	visibility: 0
+	principalClass: LocationModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.DiscordModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.PowerPointModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.OutlookModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GoogleDriveModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.mediaremote.controlcenter.airplaymirroring
+	visibility: 0
+	principalClass: MPAVAirPlayMirroringModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.PandoraModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LINEModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.LowPowerModule
+	visibility: 0
+	principalClass: CCUILowPowerModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.apple.control-center.CameraModule
+	visibility: 0
+	principalClass: CCUICameraModule
+	principalSuperclass: CCUIAppLauncherModule
+
+module: com.jailbreak365.control-center.AppStoreSearchModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SiriusXMModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.TinyDisplayModule
+	visibility: 0
+	principalClass: TinyDisplayModule
+	principalSuperclass: CCUIDisplayModule
+
+module: com.jailbreak365.control-center.AmazonMusicModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.MessengerModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.CydiaModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.shazamkit.controlcenter.ShazamModule
+	visibility: 0
+	principalClass: SHShazamModule
+	principalSuperclass: CCUIMenuModuleViewController
+
+module: com.jailbreak365.control-center.GoogleAuthenticatorModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.Time2Module
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.FlashlightModule
+	visibility: 0
+	principalClass: CCUIFlashlightModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.KKBoxModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SquareModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GoogleLinkModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.TinyAudioModule
+	visibility: 0
+	principalClass: TinyAudioModule
+	principalSuperclass: MediaControlsAudioModule
+
+module: com.jailbreak365.control-center.SettingsModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.donotdisturb.DoNotDisturbModule
+	visibility: 0
+	principalClass: DNDUIControlCenterModule
+	principalSuperclass: CCUIMenuModuleViewController
+
+module: com.jailbreak365.control-center.RedditModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.UICacheModule
+	visibility: 0
+	principalClass: UICacheModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.WeatherModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.FacebookModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.WazeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.PerformanceTraceModule
+	visibility: 2
+	principalClass: CCUIPerformanceTraceModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.CarModeModule
+	visibility: 0
+	principalClass: CCUICarModeModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.apple.mediaremote.controlcenter.nowplaying
+	visibility: 0
+	principalClass: MediaControlsModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.BofAModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.UberModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SafariModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.Home.ControlCenter
+	visibility: 2
+	principalClass: HUCCControlCenterModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.Ext3nderModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.RespringModule
+	visibility: 0
+	principalClass: RespringModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.apple.mediaremote.controlcenter.audio
+	visibility: 0
+	principalClass: MediaControlsAudioModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.OneDriveModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.BoxModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ShazamModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.NewsModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.InstagramModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.AmazonDEModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.CalculatorModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.AppearanceModule
+	visibility: 0
+	principalClass: CCUIAppearanceModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.FilzaModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SafeModeModule
+	visibility: 0
+	principalClass: SafeModeModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.GoogleAssistantModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LDRestartModule
+	visibility: 0
+	principalClass: LDRestartModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.SMSModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.TelegramModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SpotifyModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.mobiletimer.controlcenter.timer
+	visibility: 0
+	principalClass: MTCCTimerModule
+	principalSuperclass: CCUIAppLauncherModule
+
+module: com.jailbreak365.control-center.NetflixModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ShortcutsOldModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.MuteModule
+	visibility: 2
+	principalClass: CCUIMuteModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.apple.accessibility.controlcenter.text.size
+	visibility: 0
+	principalClass: AXCCTextSizeModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.ConnectivityModule
+	visibility: 0
+	principalClass: CCUIConnectivityModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.BedtimeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.accessibility.controlcenter.general
+	visibility: 0
+	principalClass: AXCCShortcutModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.MarioRunModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ZebraModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.CalcbotModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.PhotosModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.AlarmModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LyftModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.accessibility.controlcenter.guidedaccess
+	visibility: 0
+	principalClass: AXCCGuidedAccessModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GoogleModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.PayPalModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.WordModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.HomeButtonModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.replaykit.controlcenter.screencapture
+	visibility: 0
+	principalClass: RPControlCenterModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.iCleanerProModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.FaceTimeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.MegaModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.stopwatch
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.PhoneModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.HomeAppModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.WhatsAppModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.FortniteModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.AppleMusicModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.MapsModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.MagnifierModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.Module
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ExcelModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.MuteModuleCC
+	visibility: 0
+	principalClass: MuteModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.CARROTWeatherModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LockModule
+	visibility: 0
+	principalClass: LockModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.FilesModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.SoundCloudModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.BooksModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ApolloModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.FireTVModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ProTubeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.DisplayModule
+	visibility: 0
+	principalClass: CCUIDisplayModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.FeedbackAssistantModule
+	visibility: 0
+	principalClass: CCUIFeedbackAssistantModule
+	principalSuperclass: CCUIAppLauncherModule
+
+module: com.apple.control-center.QRCodeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.WalletModule
+	visibility: 0
+	principalClass: CCUIWalletModule
+	principalSuperclass: CCUIAppLauncherModule
+
+module: com.jailbreak365.control-center.RebootModule
+	visibility: 0
+	principalClass: RebootModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.apple.control-center.AppleTVRemoteModule
+	visibility: 0
+	principalClass: TVRemoteModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.TinderModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LastPassModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.LowPowerModule
+	visibility: 0
+	principalClass: CCUILowPowerModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.ChromeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module:  com.jailbreak365.control-center.MailModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ScreenshotModule
+	visibility: 0
+	principalClass: ScreenshotModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.GooglePlayMusicModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.YouTubeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.BalanceCheckModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ViberModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.GoogleTranslateModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.QuickNoteModule
+	visibility: 0
+	principalClass: ICControlCenterQuickNoteModule
+	principalSuperclass: CCUIAppLauncherModule
+
+module: com.jailbreak365.control-center.magicAppModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.apple.control-center.OrientationLockModule
+	visibility: 1
+	principalClass: CCUIOrientationLockModule
+	principalSuperclass: CCUIToggleModule
+
+module: com.jailbreak365.control-center.SnapchatModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.PrivateBrowserModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.ClockModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.WorldClockModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.AmazonModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.CalendarModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.iTunesModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject
+
+module: com.jailbreak365.control-center.QRCodeModule
+	visibility: 0
+	principalClass: CCUIAppLauncherModule
+	principalSuperclass: NSObject

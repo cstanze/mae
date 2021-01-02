@@ -10,7 +10,6 @@
 
 /* CCUIModularControlCenterViewController object */
     __strong static id _sharedObject;
-    __strong static id _sharedRepository;
 
 %hook CCUIScrollView
 -(void)setContentInset:(UIEdgeInsets)arg1 {
@@ -31,25 +30,37 @@
 %end
 
 %hook CCUIModularControlCenterOverlayViewController
-%property(nonatomic, retain) MFSystemViewController *controlCenterX;
+%property(nonatomic, retain) MFSystemViewController *controlCenter;
 -(void)viewDidLoad {
     %orig;
-    CCSModuleRepository *moduleRepo = [[%c(CCSRemoteServiceProvider) sharedInstance] valueForKey:@"_moduleRepository"];
-    (void)[moduleRepo _loadAllModuleMetadata];
+    CCSModuleRepository *moduleRepo = MSHookIvar<CCSModuleRepository*>([%c(CCSRemoteServiceProvider) sharedInstance], "_moduleRepository");
+    NSDictionary *moduleMetadata = MSHookIvar<NSDictionary*>(moduleRepo, "_allModuleMetadataByIdentifier");
+
+    for(NSString *key in moduleMetadata) {
+        CCSModuleMetadata *meta = moduleMetadata[key];
+        NSBundle *moduleBundle = [NSBundle bundleWithURL:[meta moduleBundleURL]];
+        [moduleBundle load];
+        NSDictionary *moduleInfo = [NSDictionary dictionaryWithContentsOfURL:[moduleBundle URLForResource:@"Info" withExtension:@"plist"] error:nil];
+
+        Class principalClass = objc_getClass([moduleInfo[@"NSPrincipalClass"] UTF8String]);
+
+        NSLog(@"[Mae] module: %@\n\tvisibility: %llu\n\tprincipalClass: %@\n\tprincipalSuperclass: %@", meta.moduleIdentifier, meta.visibilityPreference, moduleInfo[@"NSPrincipalClass"], NSStringFromClass([principalClass superclass]));
+    }
+    
     self.overlayBackgroundView.tag = 2912;
     self.overlayBackgroundView.hidden = YES;
 
     self.overlayHeaderView.hidden = YES;
 
-    self.controlCenterX = [[MFSystemViewController alloc] init];
-    self.controlCenterX.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.controlCenter = [[MFSystemViewController alloc] init];
+    self.controlCenter.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 
     for(UIView *subview in self.overlayScrollView.subviews){
         [subview removeFromSuperview];
     }
 
-    [self.overlayScrollView addSubview:self.controlCenterX.view];
-    [self.overlayScrollView sendSubviewToBack:self.controlCenterX.view];
+    [self.overlayScrollView addSubview:self.controlCenter.view];
+    [self.overlayScrollView sendSubviewToBack:self.controlCenter.view];
     [self.overlayScrollView setScrollEnabled:NO];
 }
 %end
@@ -62,39 +73,25 @@
 }
 %end
 
-%hook CCSModuleRepository
--(id)init {
-    return _sharedRepository = %orig;
-}
+// %hook CCSModuleRepository
 
-%new
-+(id)sharedInstance {
-	return _sharedRepository;
-}
+// %new
+// -(id)_loadAllModuleMetadata {
+// 	NSMutableArray *modulesDict = [NSMutableArray new];
+// 	for (NSURL *repositoryURL in [self valueForKey:@"_directoryURLs"]) {
+// 		NSError *error = nil;
+// 		NSArray *bundleURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:repositoryURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsHiddenFiles) error:&error];
 
-%new
--(id)_loadAllModuleMetadata {
-	NSMutableArray *modulesDict = [NSMutableArray new];
-	for (NSURL *repositoryURL in [self valueForKey:@"_directoryURLs"]) {
-		NSError *error = nil;
-		NSArray *bundleURLs = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:repositoryURL includingPropertiesForKeys:nil options:(NSDirectoryEnumerationSkipsHiddenFiles) error:&error];
+// 		if (bundleURLs) {
+// 			for (NSURL *bundleURL in bundleURLs) {
+// 				if ([[bundleURL pathExtension] caseInsensitiveCompare:@"bundle"] == NSOrderedSame) {
+// 					CCSModuleMetadata *metadata = [%c(CCSModuleMetadata) metadataForBundleAtURL:bundleURL];
+// 					NSLog(@"[Mae] Module: %@, visibility: %llu", metadata.moduleIdentifier, metadata.visibilityPreference);
+// 				}
+// 			}
+// 		}
+// 	}
 
-		if (bundleURLs) {
-			for (NSURL *bundleURL in bundleURLs) {
-				if ([[bundleURL pathExtension] caseInsensitiveCompare:@"bundle"] == NSOrderedSame) {
-					CCSModuleMetadata *metadata = [%c(CCSModuleMetadata) metadataForBundleAtURL:bundleURL];
-					NSLog(@"[Mae] Module: %@, visibility: %llu", metadata.moduleIdentifier, metadata.visibilityPreference);
-				}
-			}
-		}
-	}
-
-	return modulesDict;
-}
-%end
-
-%ctor {
-    loadPrefs();
-    if(maeEnabled)
-        %init;
-}
+// 	return modulesDict;
+// }
+// %end

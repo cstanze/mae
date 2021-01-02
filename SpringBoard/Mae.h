@@ -1,6 +1,7 @@
 /* External Frameworks */
     #import <spawn.h>
-    #import <MaeCommon/MaeCommon.hh>
+    #import <objc/runtime.h>
+    #import <MaeCommon/MaeCommon.h>
 /* Views & View Controllers */
     #import <MaeUI/MFSystemViewController.h>
 
@@ -9,7 +10,7 @@
 @end
 
 @interface CCUIModularControlCenterOverlayViewController : UIViewController
-@property(nonatomic, retain) MFSystemViewController *controlCenterX;
+@property(nonatomic, retain) MFSystemViewController *controlCenter;
 @property(nonatomic, retain) UIView *overlayModuleCollectionView;
 @property(nonatomic, retain) UIScrollView *overlayScrollView;
 @property(nonatomic, retain) UIView *overlayBackgroundView;
@@ -19,13 +20,13 @@
 
 @interface CCSModuleRepository : NSObject {
     NSArray *_directoryURLs;
+    NSDictionary *_alllModuleMetadataByIdentifier;
 }
-+(id)sharedInstance;
 -(id)_loadAllModuleMetadata;
 @end
 
 @interface CCSModuleMetadata : NSObject
-+(instancetype)metadataForBundleAtURL:(id)arg1 ;
+-(NSURL*)moduleBundleURL;
 @property (nonatomic, copy, readonly) NSString *moduleIdentifier;
 @property (nonatomic, readonly) unsigned long long visibilityPreference;
 @end
