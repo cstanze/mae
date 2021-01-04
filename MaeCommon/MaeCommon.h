@@ -6,7 +6,7 @@
 #import <MaeServices/MFVolumeHandler.h>
 #import <MaeServices/MFBrightnessHandler.h>  
 
-/* Private hesders */
+/* Private headers */
 #import <ControlCenterServices/Private.h>
 #import <ControlCenterUI/Modules.h>
   
