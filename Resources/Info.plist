@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>MaeServices</string>
+	<string>AlexandraUI</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.constanze.maeservices</string>
+	<string>com.constanze.alexandra</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
