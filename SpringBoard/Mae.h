@@ -18,25 +18,6 @@
 -(void)_updatePresentationForLocationY:(double)arg1;
 @end
 
-@interface CCSModuleRepository : NSObject {
-    NSArray *_directoryURLs;
-    NSDictionary *_alllModuleMetadataByIdentifier;
-}
--(id)_loadAllModuleMetadata;
-@end
-
-@interface CCSModuleMetadata : NSObject
--(NSURL*)moduleBundleURL;
-@property (nonatomic, copy, readonly) NSString *moduleIdentifier;
-@property (nonatomic, readonly) unsigned long long visibilityPreference;
-@end
-
-@interface CCSRemoteServiceProvider : NSObject {
-    CCSModuleRepository *_moduleRepository;
-}
-+(id)sharedInstance;
-@end
-
 /*
  * @interface SBControlCenterController : NSObject
  *  +(id)sharedInstance;

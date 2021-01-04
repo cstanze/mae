@@ -34,9 +34,17 @@
 -(void)viewDidLoad {
     %orig;
     CCSModuleRepository *moduleRepo = MSHookIvar<CCSModuleRepository*>([%c(CCSRemoteServiceProvider) sharedInstance], "_moduleRepository");
+    [moduleRepo _updateAvailableModuleMetadata];
     NSDictionary *moduleMetadata = MSHookIvar<NSDictionary*>(moduleRepo, "_allModuleMetadataByIdentifier");
+    NSLog(@"[Mae] availableModules:");
+    NSArray *availableModules = [(NSSet*)MSHookIvar<NSSet*>(moduleRepo, "_availableModuleIdentifiers") allObjects];
+    for(NSString *module in availableModules) {
+        NSLog(@"[Mae] \t%@", module);
+    }
+    NSLog(@"[Mae]");
 
     for(NSString *key in moduleMetadata) {
+        if(![availableModules containsObject:key]) continue;
         CCSModuleMetadata *meta = moduleMetadata[key];
         NSBundle *moduleBundle = [NSBundle bundleWithURL:[meta moduleBundleURL]];
         [moduleBundle load];
@@ -44,7 +52,10 @@
 
         Class principalClass = objc_getClass([moduleInfo[@"NSPrincipalClass"] UTF8String]);
 
-        NSLog(@"[Mae] module: %@\n\tvisibility: %llu\n\tprincipalClass: %@\n\tprincipalSuperclass: %@", meta.moduleIdentifier, meta.visibilityPreference, moduleInfo[@"NSPrincipalClass"], NSStringFromClass([principalClass superclass]));
+        NSLog(@"[Mae] %@ <=> %@", meta.moduleIdentifier, [principalClass performSelector:@selector(_methodDescription)]);
+
+        if([[[%c(CCSModuleSettingsProvider) sharedProvider] orderedUserEnabledModuleIdentifiers] containsObject:meta.moduleIdentifier])
+            NSLog(@"[Mae] Enabled module: %@ <=> %@", meta.moduleIdentifier, NSStringFromClass([principalClass superclass]));
     }
     
     self.overlayBackgroundView.tag = 2912;

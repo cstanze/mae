@@ -5,6 +5,10 @@
 #import <MaeServices/MFLowPowerToggle.h>
 #import <MaeServices/MFVolumeHandler.h>
 #import <MaeServices/MFBrightnessHandler.h>  
+
+/* Private hesders */
+#import <ControlCenterServices/Private.h>
+#import <ControlCenterUI/Modules.h>
   
 /* Imports */
 #import <Cephei/HBPreferences.h>
