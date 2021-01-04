@@ -1,3 +1,5 @@
+#import <UIKit/UIKit.h>
+
 @interface _UIBackdropViewSettings : NSObject
 +(id)settingsForStyle:(NSInteger)style;
 @end

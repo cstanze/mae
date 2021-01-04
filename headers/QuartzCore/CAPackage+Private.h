@@ -1,3 +1,5 @@
+#import <UIKit/UIKit.h>
+
 extern NSString *const kCAPackageTypeCAMLBundle;
 
 @interface CAPackage : NSObject

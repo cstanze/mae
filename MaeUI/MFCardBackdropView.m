@@ -7,7 +7,7 @@
 
   // UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:];
   // self.backdropView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-  MTMaterialView *mtview = [MTMaterialView materialViewWithRecipeNamed:@"plattersDark" inBundle:nil configuration:1 initialWeighting:1.0 scaleAdjustment:nil];
+  MTMaterialView *mtview = [NSClassFromString(@"MTMaterialView") materialViewWithRecipeNamed:@"plattersDark" inBundle:nil configuration:1 initialWeighting:1.0 scaleAdjustment:nil];
   [mtview setBlurEnabled:YES];
   self.backdropView = mtview;
   [self addSubview:self.backdropView];

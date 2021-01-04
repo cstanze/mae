@@ -1,3 +1,5 @@
+#import <UIKit/UIKit.h>
+
 @interface MFLayoutOptions : NSObject
 +(CGFloat)deviceWidth;
 +(CGFloat)deviceHeight;

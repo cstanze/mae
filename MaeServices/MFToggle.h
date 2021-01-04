@@ -1,3 +1,5 @@
+#import <UIKit/UIKit.h>
+
 @interface MFToggle : NSObject
 @property (nonatomic, assign) BOOL toggled;
 +(instancetype)sharedInstance;

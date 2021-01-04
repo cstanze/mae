@@ -1,6 +1,6 @@
 #import "MFLayoutOptions.h"
 #import <MPUFoundation/MPULayoutInterpolator.h>
-#import <UIKit+Private/UIScreen+Private.h>
+#import <UIKit/UIScreen+Private.h>
 #import <QuartzCore/CALayer+Private.h>
 
 static int isRTL = -1;

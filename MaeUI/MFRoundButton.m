@@ -1,5 +1,5 @@
 #import "MFRoundButton.h"
-#import <UIKit+Private/UIControl+Private.h>
+#import <UIKit/UIControl+Private.h>
 #import "MFLayoutOptions.h"
 
 @implementation MFRoundButton

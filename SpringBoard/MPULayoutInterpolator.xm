@@ -1,3 +1,5 @@
+#import <UIKit/UIKit.h>
+
 @interface MPULayoutInterpolator : NSObject
 @property (nonatomic, retain) NSMutableArray *values;
 @property (nonatomic, retain) NSMutableArray *referenceMetrics;
