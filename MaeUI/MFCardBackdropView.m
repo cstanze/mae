@@ -12,10 +12,9 @@
   self.backdropView = mtview;
   [self addSubview:self.backdropView];
 
-  if(@available(iOS 13.0, *))
-    self.backdropView.layer.cornerCurve = kCACornerCurveContinuous;
-  else
-    self.backdropView.layer.continuousCorners = YES;
+  if(@available(iOS 13.0, *)) self.backdropView.layer.cornerCurve = kCACornerCurveContinuous;
+  else self.backdropView.layer.continuousCorners = YES;
+
   self.backdropView.layer.cornerRadius = 52;
   self.backdropView.layer.maskedCorners = (kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner);
   self.backdropView.clipsToBounds = YES;
@@ -24,10 +23,7 @@
 }
 
 -(void)setDark:(BOOL)dark {
-  NSString *recipe = dark ? @"plattersDark" : @"platters";
-  [UIView animateWithDuration:0.3 animations:^{
-    [self.backdropView setRecipeName:recipe];
-  } completion:nil];
+  [self.backdropView setRecipeName:(dark ? @"plattersDark" : @"platters")];
 }
 
 -(void)layoutSubviews {

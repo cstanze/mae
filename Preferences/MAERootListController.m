@@ -9,6 +9,7 @@
     if (self) {
         AppearanceSettings *appearanceSettings = [[AppearanceSettings alloc] init];
         self.hb_appearanceSettings = appearanceSettings;
+
         self.respringButton = [[UIBarButtonItem alloc] initWithTitle:@"Apply"
                                     style:UIBarButtonItemStylePlain
                                     target:self
@@ -58,26 +59,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,200,200)];
-    self.headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,200,200)];
-    self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.headerImageView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/MaePrefs.bundle/Banner.png"];
-    self.headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    [self.headerView addSubview:self.headerImageView];
-    [NSLayoutConstraint activateConstraints:@[
-        [self.headerImageView.topAnchor constraintEqualToAnchor:self.headerView.topAnchor],
-        [self.headerImageView.leadingAnchor constraintEqualToAnchor:self.headerView.leadingAnchor],
-        [self.headerImageView.trailingAnchor constraintEqualToAnchor:self.headerView.trailingAnchor],
-        [self.headerImageView.bottomAnchor constraintEqualToAnchor:self.headerView.bottomAnchor],
-    ]];
-
-    _table.tableHeaderView = self.headerView;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    tableView.tableHeaderView = self.headerView;
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(respring) forControlEvents:UIControlEventValueChanged];
+    _table.refreshControl = refreshControl;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,7 +89,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat offsetY = scrollView.contentOffset.y;
-    if (offsetY > 200) {
+    if (offsetY > 33.50) {
         [UIView animateWithDuration:0.2 animations:^{
             self.iconView.alpha = 1.0;
             self.titleLabel.alpha = 0.0;
@@ -116,11 +100,10 @@
             self.titleLabel.alpha = 1.0;
         }];
     }
-    if (offsetY > 0) offsetY = 0;
-    self.headerImageView.frame = CGRectMake(0, offsetY, self.headerView.frame.size.width, 200 - offsetY);
 }
 
 -(void)respring {
+    [refreshControl endRefreshing];
 	[HBRespringController respringAndReturnTo:[NSURL URLWithString:@"prefs:root=Mae"]];
 }
 

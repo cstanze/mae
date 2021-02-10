@@ -84,6 +84,14 @@
 }
 %end
 
+%hook CCUIFlickGestureRecognizer
+-(BOOL)_validateFlickWithTouch:(id)arg1 {
+    return YES;
+}
+
+
+%end
+
 // %hook CCSModuleRepository
 
 // %new

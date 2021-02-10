@@ -5,6 +5,8 @@
 	<key>items</key>
 	<array>
 		<dict>
+			<key>cellClass</key>
+			<string>AlexaSwitchCell</string>
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>default</key>
@@ -12,11 +14,25 @@
 			<key>defaults</key>
 			<string>com.constanze.maeprefs</string>
 			<key>key</key>
-			<string>maeEnabled</string>
+			<string>enabled</string>
 			<key>label</key>
 			<string>Enabled?</string>
 			<key>PostNotification</key>
 			<string>com.constanze.maeprefs/ReloadPrefs</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cellClass</key>
+			<string>AlexaCell</string>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>label</key>
+			<string>Modules</string>
+			<key>detail</key>
+			<string>MAEModulePositionController</string>
 		</dict>
 	</array>
 	<key>title</key>

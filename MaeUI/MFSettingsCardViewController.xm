@@ -5,8 +5,7 @@
 -(id)init {
   self = [super init];
 
-  self.backdropView = [[MFCardBackdropView alloc] init];
-  [self.backdropView setDark:YES];  
+  self.backdropView = [[MFCardBackdropView alloc] init]; 
   [self.view addSubview:self.backdropView];
 
   CCSModuleRepository *moduleRepo = MSHookIvar<CCSModuleRepository*>([%c(CCSRemoteServiceProvider) sharedInstance], "_moduleRepository");
