@@ -18,5 +18,6 @@ After:
 
 ## LICENSE
 
-License TBD
+License TBD (default licensing laws in effect)
+
 pls no steal code uwu
