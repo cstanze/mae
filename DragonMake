@@ -1,0 +1,54 @@
+name: Mae
+id: com.constanze.mae
+version: 0.1.0
+author: DrunkProgramer
+depends: mobilesubstrate, preferenceloader
+all:
+  frameworks:
+    - Cephei
+  cflags: '-I../headers -I../'
+
+postinst:
+  - "echo \"Much love from Constanze (DrunkProgramer)\""
+
+MaeServices:
+  dir: MaeServices
+  type: framework
+  
+  files:
+    - "**/*.m"
+    - "**/*.xm"
+
+MaeCommon:
+  type: framework
+  dir: MaeCommon
+  frameworks:
+    - Cephei
+    - MaeServices
+  
+  files:
+    - "*.m"
+
+MaeUI:
+  type: framework
+  frameworks:
+    - Cephei
+    - MaeCommon
+    - MaeServices
+  dir: MaeUI
+
+  files:
+    - "**/*.m"
+    - "**/*.xm"
+
+Mae:
+  dir: SpringBoard
+  type: tweak
+  files:
+    - "**/*.xm"
+
+MaePreferences:
+  dir: Preferences
+  type: prefs
+  files:
+    - "*.m"

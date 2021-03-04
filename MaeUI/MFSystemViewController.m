@@ -37,7 +37,7 @@ __strong static id _sharedObject;
 
   double offset = ccheight * (1 - arg1);
 
-  if(offset < 0) {
+  if(offset <= 0) {
     offset = 0;
   }
 
@@ -45,6 +45,6 @@ __strong static id _sharedObject;
 }
 
 -(CGFloat)revealProgress {
-  return self.backgroundView.alpha*2;
+  return self.backgroundView.alpha * 2;
 }
 @end

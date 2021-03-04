@@ -3,13 +3,13 @@
  * Mae
  * 
  * Constanze (c) 2020
- * Julius Nieves (c) 2020 
  * DrunkProgramer (c) 2020
  */
 #import "Mae.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 /* CCUIModularControlCenterViewController object */
-    __strong static id _sharedObject;
+    __strong static id _sharedOverlayObject;
 
 %hook CCUIScrollView
 -(void)setContentInset:(UIEdgeInsets)arg1 {
@@ -17,46 +17,45 @@
 }
 %end
 
-
-%hook CCUIModularControlCenterViewController
+%hook CCUIModularControlCenterOverlayViewController
+%property(nonatomic, retain) MFSystemViewController *controlCenter;
+%property(nonatomic, retain) MFCardBackdropView *backdropView;
 -(id)init {
-    return _sharedObject = %orig;
+    return _sharedOverlayObject = %orig;
 }
 
 %new
 +(id)sharedInstance {
-	return _sharedObject;
+    return _sharedOverlayObject;
 }
-%end
 
-%hook CCUIModularControlCenterOverlayViewController
-%property(nonatomic, retain) MFSystemViewController *controlCenter;
 -(void)viewDidLoad {
     %orig;
-    CCSModuleRepository *moduleRepo = MSHookIvar<CCSModuleRepository*>([%c(CCSRemoteServiceProvider) sharedInstance], "_moduleRepository");
-    [moduleRepo _updateAvailableModuleMetadata];
-    NSDictionary *moduleMetadata = MSHookIvar<NSDictionary*>(moduleRepo, "_allModuleMetadataByIdentifier");
-    NSLog(@"[Mae] availableModules:");
-    NSArray *availableModules = [(NSSet*)MSHookIvar<NSSet*>(moduleRepo, "_availableModuleIdentifiers") allObjects];
-    for(NSString *module in availableModules) {
-        NSLog(@"[Mae] \t%@", module);
-    }
-    NSLog(@"[Mae]");
+    NSLog(@"[Mae] viewDidLoad. prepping cc");
+    // CCSModuleRepository *moduleRepo = MSHookIvar<CCSModuleRepository*>([%c(CCSRemoteServiceProvider) sharedInstance], "_moduleRepository");
+    // [moduleRepo _updateAvailableModuleMetadata];
+    // NSDictionary *moduleMetadata = MSHookIvar<NSDictionary*>(moduleRepo, "_allModuleMetadataByIdentifier");
+    // NSLog(@"[Mae] availableModules:");
+    // NSArray *availableModules = [(NSSet*)MSHookIvar<NSSet*>(moduleRepo, "_availableModuleIdentifiers") allObjects];
+    // for(NSString *module in availableModules) {
+    //     NSLog(@"[Mae] \t%@", module);
+    // }
+    // NSLog(@"[Mae]");
 
-    for(NSString *key in moduleMetadata) {
-        if(![availableModules containsObject:key]) continue;
-        CCSModuleMetadata *meta = moduleMetadata[key];
-        NSBundle *moduleBundle = [NSBundle bundleWithURL:[meta moduleBundleURL]];
-        [moduleBundle load];
-        NSDictionary *moduleInfo = [NSDictionary dictionaryWithContentsOfURL:[moduleBundle URLForResource:@"Info" withExtension:@"plist"] error:nil];
+    // for(NSString *key in moduleMetadata) {
+    //     if(![availableModules containsObject:key]) continue;
+    //     CCSModuleMetadata *meta = moduleMetadata[key];
+    //     NSBundle *moduleBundle = [NSBundle bundleWithURL:[meta moduleBundleURL]];
+    //     [moduleBundle load];
+    //     NSDictionary *moduleInfo = [NSDictionary dictionaryWithContentsOfURL:[moduleBundle URLForResource:@"Info" withExtension:@"plist"] error:nil];
 
-        Class principalClass = objc_getClass([moduleInfo[@"NSPrincipalClass"] UTF8String]);
+    //     Class principalClass = objc_getClass([moduleInfo[@"NSPrincipalClass"] UTF8String]);
 
-        NSLog(@"[Mae] %@ <=> %@", meta.moduleIdentifier, [principalClass performSelector:@selector(_methodDescription)]);
+    //     NSLog(@"[Mae] %@ <=> %@", meta.moduleIdentifier, [principalClass performSelector:@selector(_methodDescription)]);
 
-        if([[[%c(CCSModuleSettingsProvider) sharedProvider] orderedUserEnabledModuleIdentifiers] containsObject:meta.moduleIdentifier])
-            NSLog(@"[Mae] Enabled module: %@ <=> %@", meta.moduleIdentifier, NSStringFromClass([principalClass superclass]));
-    }
+    //     if([[[%c(CCSModuleSettingsProvider) sharedProvider] orderedUserEnabledModuleIdentifiers] containsObject:meta.moduleIdentifier])
+    //         NSLog(@"[Mae] Enabled module: %@ <=> %@", meta.moduleIdentifier, NSStringFromClass([principalClass superclass]));
+    // }
     
     self.overlayBackgroundView.tag = 2912;
     self.overlayBackgroundView.hidden = YES;
@@ -66,13 +65,15 @@
     self.controlCenter = [[MFSystemViewController alloc] init];
     self.controlCenter.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 
-    for(UIView *subview in self.overlayScrollView.subviews){
+    for(UIView *subview in self.overlayScrollView.subviews) {
         [subview removeFromSuperview];
     }
 
     [self.overlayScrollView addSubview:self.controlCenter.view];
     [self.overlayScrollView sendSubviewToBack:self.controlCenter.view];
     [self.overlayScrollView setScrollEnabled:NO];
+
+    [MSHookIvar<CCUIScrollView*>(self, "_scrollView") setScrollEnabled:NO];
 }
 %end
 
@@ -80,16 +81,8 @@
 -(void)setWeighting:(CGFloat)arg1 {
     %orig;
     if(self.tag == 2912)
-        [[MFSystemViewController sharedInstance] setRevealProgress:(arg1 > 1.01 ? 1.0 : arg1)];
+        [[MFSystemViewController sharedInstance] setRevealProgress:arg1];
 }
-%end
-
-%hook CCUIFlickGestureRecognizer
--(BOOL)_validateFlickWithTouch:(id)arg1 {
-    return YES;
-}
-
-
 %end
 
 // %hook CCSModuleRepository

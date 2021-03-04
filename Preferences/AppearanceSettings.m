@@ -31,7 +31,7 @@
     return NO;
 }
 
--(NSUInteger)largeTitleStyle {
-    return 2;
+-(HBAppearanceSettingsLargeTitleStyle)largeTitleStyle {
+    return HBAppearanceSettingsLargeTitleStyleNever;
 }
 @end

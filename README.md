@@ -4,6 +4,8 @@
 
 •ᴗ•
 
+**Note:** Using DragonMake with dragon doesn't work. I left it in just in case I can get it to work
+
 ## TODO
 
 First:

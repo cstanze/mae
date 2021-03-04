@@ -3,6 +3,5 @@
 #import <MaeUI/MFCardBackdropView.h>
 #import <MaeUI/MFBaseViewController.h>
 #import <MaeUI/MFSystemViewController.h>
-#import <MaeUI/MFMediaCardViewController.h>
-#import <MaeUI/MFSettingsCardViewController.h>
+#import <MaeUI/MFCentralViewController.h>
 #import <MaeUI/MFControlCenterViewController.h>

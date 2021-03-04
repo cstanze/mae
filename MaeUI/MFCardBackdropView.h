@@ -16,10 +16,12 @@
 -(BOOL)isBlurEnabled;
 -(NSString *)recipeName;
 -(void)setRecipeName:(NSString *)name;
+-(void)setWeighting:(CGFloat)weight;
 @end
 
 @interface MFCardBackdropView : UIView
 @property(nonatomic, retain) MTMaterialView *backdropView;
 @property(nonatomic, retain) UIImageView *cutoutView;
 -(void)setDark:(BOOL)dark;
+-(void)setWeighting:(CGFloat)weight;
 @end

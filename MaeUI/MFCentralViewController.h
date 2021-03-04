@@ -10,6 +10,6 @@
 -(void)toggleCurrentStyle;
 @end
 
-@interface MFSettingsCardViewController : MFBaseScrollViewController
+@interface MFCentralViewController : MFBaseScrollViewController
 @property(nonatomic, retain) MFCardBackdropView *backdropView;
 @end

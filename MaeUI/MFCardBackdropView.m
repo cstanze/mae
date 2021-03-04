@@ -12,8 +12,7 @@
   self.backdropView = mtview;
   [self addSubview:self.backdropView];
 
-  if(@available(iOS 13.0, *)) self.backdropView.layer.cornerCurve = kCACornerCurveContinuous;
-  else self.backdropView.layer.continuousCorners = YES;
+  self.backdropView.layer.cornerCurve = kCACornerCurveContinuous;
 
   self.backdropView.layer.cornerRadius = 52;
   self.backdropView.layer.maskedCorners = (kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner);
@@ -28,5 +27,9 @@
 
 -(void)layoutSubviews {
   self.backdropView.frame = self.bounds;
+}
+
+-(void)setWeighting:(CGFloat)weight {
+  [self.backdropView setWeighting:weight];
 }
 @end

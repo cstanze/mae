@@ -1,9 +1,6 @@
-#import "MFSettingsCardViewController.h"
-#import "MFMediaCardViewController.h"
+#import "MFCentralViewController.h"
 #import "MFBaseViewController.h"
 
 @interface MFControlCenterViewController : MFBaseViewController
-@property(nonatomic, retain) UIScrollView *cardScrollView;
-@property(nonatomic, retain) MFSettingsCardViewController *settingsCard;
-@property(nonatomic, retain) MFMediaCardViewController *mediaCard;
+@property(nonatomic, retain) MFCentralViewController *mainVC;
 @end
