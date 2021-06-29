@@ -1,0 +1,6 @@
+{
+  // Quick fix for this specific workspace
+  "files.associations": {
+		"*.h": "objective-c"
+	}
+}
