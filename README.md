@@ -1,6 +1,6 @@
 # Mae
 
-## The next generation of your Control Center
+**The next generation of your Control Center**
 
 •ᴗ•
 
@@ -8,18 +8,14 @@
 
 ## TODO
 
-First:
+- Finish the code for showing modules
+- Add default modules (how to do toggles??) (settings for some modules) (style-based settings)
+- Add more styles (Preferences for each?)
+- Pack Localizations into MaeUI
 
-- Fix CALayer fill bug
+## License
 
-After:
+As most other repositories, this one has code licensed by the MIT License.
 
-- Add CellularData.ca
-- Move all ca packages to a Resources folder.
-- Pack localizations into the MaeUI bundle.
+... But, if you would like to credit me, that would be greatly appreciated ❤️
 
-## LICENSE
-
-License TBD (default licensing laws in effect)
-
-pls no steal code uwu
