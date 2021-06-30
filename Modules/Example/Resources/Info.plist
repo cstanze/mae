@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>MFExampleModule</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.constanze.example</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundlePackageType</key>
+	<string>FMWK</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+
+	<!-- Mae Plist Keys -->
+	<key>MaeEntryDisplayName</key>
+	<string>Example</string>
+	<key>MaeEntryImpl</key>
+	<string>ExampleModuleEntry</string>
+	<key>MaeContainsPreferencesEntry</key>
+	<false />
+	<key>MaePreferencesEntry</key>
+	<string></string>
+	<key>MaeHiddenModule</key>
+	<false />
+	<key>MaeModuleAuthor</key>
+	<string>Constanze</string>
+</dict>
+</plist>

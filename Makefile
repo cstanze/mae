@@ -12,5 +12,6 @@ SUBPROJECTS += MaeCommon
 SUBPROJECTS += MaeUI
 SUBPROJECTS += SpringBoard
 SUBPROJECTS += Preferences
+SUBPROJECTS += Modules
 
 include $(THEOS_MAKE_PATH)/aggregate.mk

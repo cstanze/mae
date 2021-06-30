@@ -10,8 +10,8 @@
 +(id)sharedInstance;
 -(void)setRevealProgress:(CGFloat)arg1;
 -(CGFloat)revealProgress;
--(void)updateRevealProgressByTravelDelta;
--(void)setTravelDistance:(CGFloat)distance;
--(void)setTravelDistance:(CGFloat)distance withStop:(BOOL)stop;
+// -(void)updateRevealProgressByTravelDelta;
+// -(void)setTravelDistance:(CGFloat)distance;
+// -(void)setTravelDistance:(CGFloat)distance withStop:(BOOL)stop;
 // -(CGFloat)travelDistance;
 @end
