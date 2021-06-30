@@ -12,4 +12,5 @@
 
 @interface MFCentralViewController : MFBaseScrollViewController
 @property(nonatomic, retain) MFCardBackdropView *backdropView;
+-(void)openDidOccur;
 @end

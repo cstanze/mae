@@ -6,7 +6,7 @@ FRAMEWORK_NAME = MFExampleModule
 
 MFExampleModule_FILES = ExampleModule.m
 MFExampleModule_FRAMEWORKS = UIKit
-MFExampleModule_PUBLIC_HEADERS =
+MFExampleModule_PRIVATE_FRAMEWORKS = Preferences
 MFExampleModule_INSTALL_PATH = /Library/Mae
 MFExampleModule_CFLAGS = -fobjc-arc
 MFExampleModule_LDFLAGS = -w

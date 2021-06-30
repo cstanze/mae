@@ -1,6 +1,4 @@
 #import "MAEModulePositionController.h"
-#import <string.h>
-#import <dlfcn.h>
 
 @implementation MAEModulePositionController
 -(instancetype)init {
@@ -31,24 +29,76 @@
         NSBundle *fmwkBundle = [NSBundle bundleWithPath:[@"/Library/Mae/" stringByAppendingString:_emod]];
         NSString *infoPath = [fmwkBundle pathForResource:@"Info" ofType:@"plist"];
         NSDictionary *modInfo = [[NSDictionary alloc] initWithContentsOfURL:[NSURL fileURLWithPath:infoPath] error:nil];
-        
+
+        NSLog(@"[Mae] checking mod = %@", modInfo);
+
         BOOL containsMod = NO;
-        for(NSDictionary *_mod in _modules) {
+        for(NSString *_modId in _modules) {
+          NSDictionary *_mod = [self loadModuleInfoForBundleIdentifier:_modId];
           if([_mod[@"CFBundleIdentifier"] isEqualToString:modInfo[@"CFBundleIdentifier"]])
             containsMod = YES;
         }
 
         if(!containsMod)
-          _disabledModules = [_disabledModules setByAddingObject:modInfo];
+          _disabledModules = [_disabledModules setByAddingObject:modInfo[@"CFBundleIdentifier"]];
       }
     }
 
     modules = [[_modules allObjects] mutableCopy];
     disabledModules = [[_disabledModules allObjects] mutableCopy];
-    _moduleHandles = malloc(([modules count] + [disabledModules count]) * sizeof(void*));
+    _moduleHandles = [[NSMutableArray alloc] init];
   }
 
   return self;
+}
+
+-(NSDictionary*)loadModuleInfoForBundleIdentifier:(NSString*)bundleIdentifier {
+  NSFileManager *fm = [NSFileManager defaultManager];
+  BOOL isDir;
+  if([fm fileExistsAtPath:@"/Library/Mae" isDirectory:&isDir] && isDir) {
+    NSArray *__emod = [fm contentsOfDirectoryAtPath:@"/Library/Mae" error:nil];
+    for(NSString *_emod in __emod) {
+      NSLog(@"[Mae] found bundle name = %@", _emod);
+      NSBundle *fmwkBundle = [NSBundle bundleWithPath:[@"/Library/Mae/" stringByAppendingString:_emod]];
+      NSString *infoPath = [fmwkBundle pathForResource:@"Info" ofType:@"plist"];
+      NSDictionary *modInfo = [[NSDictionary alloc] initWithContentsOfURL:[NSURL fileURLWithPath:infoPath] error:nil];
+
+      NSLog(@"[Mae] found mod info = %@, with bundle id = %@", modInfo, bundleIdentifier);
+      if([modInfo[@"CFBundleIdentifier"] isEqualToString:bundleIdentifier])
+        return modInfo;
+    }
+  }
+
+  return nil;
+}
+
+-(PSSpecifier*)createModuleSpec:(NSString*)moduleIdentifier index:(int)i {
+  NSDictionary *module = [self loadModuleInfoForBundleIdentifier:moduleIdentifier];
+
+  NSLog(@"[Mae] creating mod spec = %@", module);
+
+  if(module == nil) {
+    NSLog(@"[Mae] found nil while creating mod spec for id = %@", moduleIdentifier);
+    return nil;
+  }
+
+  NSString *nsDLPath = [[@"/Library/Mae/" stringByAppendingString:module[@"CFBundleExecutable"]] stringByAppendingString:@".framework/"];
+  NSBundle *specBundle = [NSBundle bundleWithPath:nsDLPath];
+  [_moduleHandles insertObject:specBundle atIndex:0];
+  [specBundle load];
+
+  PSSpecifier *spec = [PSSpecifier
+                        preferenceSpecifierNamed:module[@"MaeEntryDisplayName"]
+                        target:self
+                        set:NULL
+                        get:NULL
+                        detail:module[@"MaeContainsPreferencesEntry"] ? NSClassFromString(module[@"MaePreferencesEntry"]) : NSClassFromString(@"MAEDefaultModuleController")
+                        cell:PSLinkCell
+                        edit:nil];
+  
+  [spec setProperty:NSClassFromString(@"AlexaCell") forKey:PSCellClassKey];
+  
+  return spec;
 }
 
 -(id)specifiers {
@@ -77,47 +127,9 @@
   [_prefs setObject:modules forKey:@"enabledModules"];
   [_prefs setObject:disabledModules forKey:@"disabledModules"];
 
-  for(int i = 0; i < [modules count] + [disabledModules count]; i++) {
-    dlclose(_moduleHandles[i]);
+  for(NSBundle *bundle in _moduleHandles) {
+    [bundle unload];
   }
-}
-
--(void)loadModuleSpecs {
-  NSMutableArray *specList = [[NSMutableArray alloc] init];
-  NSMutableArray *dSpecList = [[NSMutableArray alloc] init];
-
-  for (NSDictionary *mod in modules) {
-    [specList addObject:[self createModuleSpec:mod index:[modules indexOfObject:mod]]];
-  }
-  [self insertContiguousSpecifiers:specList atEndOfGroup:1];
-
-  for (NSDictionary *dMod in disabledModules) {
-    [dSpecList addObject:[self createModuleSpec:dMod index:[disabledModules indexOfObject:dMod]]];
-  }
-  [self insertContiguousSpecifiers:dSpecList atEndOfGroup:2];
-}
-
--(PSSpecifier*)createModuleSpec:(NSDictionary*)module index:(int)i {
-  NSString *nsDLPath = [[[@"/Library/Mae/" stringByAppendingString:module[@"CFBundleExecutable"]] stringByAppendingString:@".framework/"] stringByAppendingString:module[@"CFBundleExecutable"]];
-  const char *dlPath = [nsDLPath UTF8String];
-  void *specHandle = dlopen(dlPath, RTLD_LAZY);
-  _moduleHandles[i] = specHandle;
-
-  PSSpecifier *spec = [PSSpecifier
-                        preferenceSpecifierNamed:module[@"MaeEntryDisplayName"]
-                        target:self
-                        set:NULL
-                        get:NULL
-                        detail:NSClassFromString(@"MAEDefaultModuleController")
-                        cell:PSLinkCell
-                        edit:nil];
-  
-  [spec setProperty:NSClassFromString(@"AlexaCell") forKey:PSCellClassKey];
-  
-  if(module[@"MaeContainsPreferencesEntry"])
-    [spec setProperty:NSClassFromString((NSString*)module[@"MaePreferencesEntry"]) forKey:@"detail"];
-  
-  return spec;
 }
 
 -(void)tableView:(UITableView*)tableView moveRowAtIndexPath:(NSIndexPath*)atIndex toIndexPath:(NSIndexPath*)toIndex {
@@ -155,6 +167,25 @@
 
 -(BOOL)shouldReloadSpecifiersOnResume {
   return NO;
+}
+
+-(void)loadModuleSpecs {
+  NSMutableArray *specList = [[NSMutableArray alloc] init];
+  NSMutableArray *dSpecList = [[NSMutableArray alloc] init];
+
+  for (NSString *mod in modules) {
+    PSSpecifier *spec = [self createModuleSpec:mod index:[modules indexOfObject:mod]];
+    if(spec != nil)
+      [specList addObject:spec];
+  }
+  [self insertContiguousSpecifiers:specList atEndOfGroup:1];
+
+  for (NSString *dMod in disabledModules) {
+    PSSpecifier *spec = [self createModuleSpec:dMod index:[modules indexOfObject:dMod]];
+    if(spec != nil)
+      [dSpecList addObject:spec];
+  }
+  [self insertContiguousSpecifiers:dSpecList atEndOfGroup:2];
 }
 
 @end

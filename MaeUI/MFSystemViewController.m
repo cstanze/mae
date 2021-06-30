@@ -9,7 +9,7 @@ __strong static id _sharedObject;
   _sharedObject = self;
 
   self.backgroundView = [[UIView alloc] init];
-  self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+  self.backgroundView.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
   [self.view addSubview:self.backgroundView];
 
   self.cardViewController = [[MFControlCenterViewController alloc] init];
@@ -23,7 +23,7 @@ __strong static id _sharedObject;
 }
 
 -(void)viewDidLayoutSubviews {
-  ccheight = self.view.frame.size.height * 0.742;
+  ccheight = self.view.frame.size.height * 0.842; //* 0.742;
   NSLog(@"[Mae] layout ccheight = %i", ccheight);
 
   // double height = self.view.frame.size.height;
@@ -42,52 +42,55 @@ __strong static id _sharedObject;
     offset = 0;
   }
 
-  NSLog(
-    @"[Mae] revealing controller (super = %@) (self = %@)",
-    self.view, 
-    self.cardViewController.view
+  self.cardViewController.view.frame = CGRectMake(
+    0,
+    (self.view.frame.size.height - ccheight) + offset + self.view.frame.size.height * 0.04,
+    self.view.frame.size.width, 
+    ccheight
   );
-  NSLog(
-    @"[Mae] hidden_super = %@, hidden_self = %@", 
-    self.view.superview.hidden ? @"YES" : @"NO",
-    self.view.superview.window.hidden ? @"YES" : @"NO"
-  );
-  self.cardViewController.view.frame = CGRectMake(0, (self.view.frame.size.height - ccheight) + offset + self.view.frame.size.height * 0.04, self.view.frame.size.width, ccheight);
+  [self.cardViewController.mainVC.backdropView setWeighting:arg1];
+  
+  if(arg1 == 1) {
+    [self.cardViewController.mainVC openDidOccur];
+  }
 }
 
 -(CGFloat)revealProgress {
   return self.backgroundView.alpha * 2;
 }
 
-// -(void)updateRevealProgressByTravelDelta {
-//   NSLog(@"[Mae] set reveal progress by travel delta: %f", MIN(_travelDistance / ccheight, 1));
-//   [self setRevealProgress:MIN(_travelDistance / ccheight, 1)];
-// }
+-(void)updateRevealProgressByTravelDelta {
+  [self setRevealProgress:MIN(_travelDistance / ccheight, 1)];
+}
 
-// -(void)setTravelDistance:(CGFloat)distance {
-//   [self setTravelDistance:distance withStop:NO];
-// }
+-(void)setTravelDistance:(CGFloat)distance withVelocity:(CGFloat)velocity {
+  [self setTravelDistance:distance withVelocity:velocity andStop:NO];
+}
 
-// -(void)setTravelDistance:(CGFloat)distance withStop:(BOOL)stop {
-//   NSLog(@"[Mae] set travel distance: %f", distance);
-//   _travelDistance = distance;
+-(void)setTravelDistance:(CGFloat)distance withVelocity:(CGFloat)velocity andStop:(BOOL)stop {
+  NSLog(@"[Mae] set travel distance: %f", distance);
+  _travelDistance = distance;
   
-//   if(stop && (distance / ccheight) < 0.6) {
-//     [UIView animateWithDuration:0.3 animations:^{
-//       [self setRevealProgress:0];
-//     }];
-//   } else if(stop && (distance / ccheight) >= 0.6) {
-//     [UIView animateWithDuration:0.3
-//             delay:0
-//             usingSpringWithDamping:0.742
-//             initialSpringVelocity:0
-//             options:0
-//             animations:^{
-//       [self setRevealProgress:1];
-//     } completion:nil];
-//   } else {
-//     [self updateRevealProgressByTravelDelta];
-//   }
-// }
+  if(stop && (distance / ccheight) < 0.13) {
+    [UIView animateWithDuration:0.3 animations:^{
+      [self setRevealProgress:0];
+    }];
+  } else if(stop && (distance / ccheight) >= 0.13) {
+    [UIView animateWithDuration:0.3
+            delay:0
+            usingSpringWithDamping:0.742
+            initialSpringVelocity:velocity
+            options:0
+            animations:^{
+      [self setRevealProgress:1];
+    } completion:nil];
+  } else {
+    [self updateRevealProgressByTravelDelta];
+  }
+}
+
+-(CGFloat)travelDistance {
+  return _travelDistance;
+}
 
 @end

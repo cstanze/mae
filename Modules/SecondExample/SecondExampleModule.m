@@ -2,19 +2,19 @@
 #import <Preferences/PSListController.h>
 #import <Preferences/PSSpecifier.h>
 
-@interface ExampleModulePreferencesController : PSListController
+@interface SecondExampleModulePreferencesController : PSListController
 @end
 
-@interface ExampleModuleEntry : NSObject
+@interface SecondExampleModuleEntry : NSObject
 @end
 
-@implementation ExampleModuleEntry
+@implementation SecondExampleModuleEntry
 -(UIView*)moduleEntry {
   return [UIView new];
 }
 @end
 
-@implementation ExampleModulePreferencesController
+@implementation SecondExampleModulePreferencesController
 - (instancetype)init {
   self = [super init];
 
@@ -23,7 +23,7 @@
 
 - (id)specifiers {
   if(_specifiers == nil) {
-    _specifiers = [self loadSpecifiersFromPlistName:@"DummyModuleSettings" target:self];
+    _specifiers = [self loadSpecifiersFromPlistName:@"SecondDummyModuleSettings" target:self];
   }
   return _specifiers;
 }

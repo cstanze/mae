@@ -25,7 +25,7 @@
 @interface MAEModulePositionController : PSEditableListController {
   NSMutableArray *modules;
   NSMutableArray *disabledModules;
-  void **_moduleHandles;
+  NSMutableArray *_moduleHandles;
 }
 @property HBPreferences *prefs;
 @end

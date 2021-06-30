@@ -1,0 +1,9 @@
+Package: com.constanze.example2
+Name: MFSecondExampleModule
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Another Example Mae Module
+Maintainer: Constanze
+Author: Constanze
+Section: System
+Tag: role::developer

@@ -81,31 +81,31 @@
 }
 %end
 
-%hook MTMaterialView
--(void)setWeighting:(CGFloat)arg1 {
-    %orig;
-    if(self.tag == 2912)
-        [[MFSystemViewController sharedInstance] setRevealProgress:arg1];
-}
-%end
-
-// TODO: Get this to work???
-// %hook SBControlCenterController
-// -(void)grabberTongueBeganPulling:(id)arg1 withDistance:(CGFloat)distance andVelocity:(CGFloat)arg3 andGesture:(id)arg4 {
+// %hook MTMaterialView
+// -(void)setWeighting:(CGFloat)arg1 {
 //     %orig;
-//     [[MFSystemViewController sharedInstance] setTravelDistance:distance];
-// }
-
-// -(void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(CGFloat)distance andVelocity:(CGFloat)arg3 andGesture:(id)arg4 {
-//     %orig;
-//     [[MFSystemViewController sharedInstance] setTravelDistance:distance];
-// }
-
-// -(void)grabberTongueEndedPulling:(id)arg1 withDistance:(CGFloat)distance andVelocity:(CGFloat)arg3 andGesture:(id)arg4 {
-//     %orig;
-//     [[MFSystemViewController sharedInstance] setTravelDistance:distance withStop:YES];
+//     if(self.tag == 2912)
+//         [[MFSystemViewController sharedInstance] setRevealProgress:arg1];
 // }
 // %end
+
+// TODO: Get this to work???
+%hook SBControlCenterController
+-(void)grabberTongueBeganPulling:(id)arg1 withDistance:(CGFloat)distance andVelocity:(CGFloat)velocity andGesture:(id)arg4 {
+    %orig;
+    [[MFSystemViewController sharedInstance] setTravelDistance:distance withVelocity:velocity];
+}
+
+-(void)grabberTongueUpdatedPulling:(id)arg1 withDistance:(CGFloat)distance andVelocity:(CGFloat)velocity andGesture:(id)arg4 {
+    %orig;
+    [[MFSystemViewController sharedInstance] setTravelDistance:distance withVelocity:velocity];
+}
+
+-(void)grabberTongueEndedPulling:(id)grabber withDistance:(CGFloat)distance andVelocity:(CGFloat)velocity andGesture:(id)arg4 {
+    %orig;
+    [[MFSystemViewController sharedInstance] setTravelDistance:distance withVelocity:velocity andStop:YES];
+}
+%end
 
 // %hook CCSModuleRepository
 

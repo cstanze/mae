@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>MFExampleModule</string>
+	<string>MFSecondExampleModule</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.constanze.example</string>
+	<string>com.constanze.example2</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -21,17 +21,17 @@
 
 	<!-- Module Implementation -->
 	<key>MaeEntryImpl</key>
-	<string>ExampleModuleEntry</string>
+	<string>SecondExampleModuleEntry</string>
 	
 	<!-- Modules Prefs -->
 	<key>MaeContainsPreferencesEntry</key>
 	<true />
 	<key>MaePreferencesEntry</key>
-	<string>ExampleModulePreferencesController</string>
+	<string>SecondExampleModulePreferencesController</string>
 	
 	<!-- Module Display Info -->
 	<key>MaeEntryDisplayName</key>
-	<string>Example</string>
+	<string>Second Example</string>
 	<key>MaeHiddenModule</key>
 	<false />
 	<key>MaeModuleAuthor</key>
