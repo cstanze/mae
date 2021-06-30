@@ -12,6 +12,7 @@
 - Add default modules (how to do toggles??) (settings for some modules) (style-based settings)
 - Add more styles (Preferences for each?)
 - Pack Localizations into MaeUI
+- Other unlisted things??
 
 ## License
 
